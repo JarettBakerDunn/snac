@@ -2,3 +2,20 @@ In file included from /home/snac_user/snac/build/include/StGermain/Discretisatio
                  from /home/snac_user/snac/build/include/StGermain/Discretisation/Discretisation.h:48,
                  from /home/snac_user/snac/build/include/StGermain/StGermain.h:50,
                  from RemeshElements.c:35:
+
+
+
+
+-I/usr/include/libxml2      RemeshElements.c
+In file included from /home/snac_user/snac/build/include/StGermain/Discretisation/Utils/Utils.h:46,
+                 from /home/snac_user/snac/build/include/StGermain/Discretisation/Discretisation.h:48,
+                 from /home/snac_user/snac/build/include/StGermain/StGermain.h:50,
+                 from RemeshElements.c:35:
+
+
+problem file is /StGermain/Utils/Src/RegularMeshUtils.h I think. I think that StGermain/Discretisation/Utils/Utils.h:46, is not able to find RegularMeshUtils.h. Some kind of include error?
+
+here is where the error function is:
+./Snac/plugins/remesher_BI/RemeshElements.c:69: void createBarycenterGrids( void* _context );
+./Snac/plugins/remesher_BI/RemeshElements.c:98: createBarycenterGrids( context );
+./Snac/plugins/remesher_BI/RemeshElements.c:319:void createBarycenterGrids( void* _context )

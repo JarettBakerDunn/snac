@@ -362,20 +362,25 @@ void createBarycenterGrids( void* _context )
 			/* 			meshExt->newBarycenters[element_lI][0],meshExt->newBarycenters[element_lI][1], */
 			/* 			meshExt->newBarycenters[element_lI][2]); */
 
+
+			//I've commented this out because it doesn't seem to work. As far as I can tell, &elgI, &elgJ, &elgK are first declared here which causes an error when building snac.
             /* Special treatment to test.
                Since some boundary elements of the new mesh fail to find containing old element,
                push the barycenters "inward" by a small amount so that these elements are forced
                to be inside the old mesh. */
-            RegularMeshUtils_Element_1DTo3D( decomp, gEltInd, &elgI, &elgJ, &elgK ); /* Decompose gEltInd into ijk indexes. */
+            //RegularMeshUtils_Element_1DTo3D( decomp, gEltInd, &elgI, &elgJ, &elgK ); /* Decompose gEltInd into ijk indexes. */
             /* The factor 1.0e-3 is totally experimental.
                To minimize error this treatment introduces into barycentric interpolation,
                a minimum value would have to be found and used. */
+			/*
             if( elgI == 0 )        meshExt->newBarycenters[element_lI][0] += 1.0e-3 * fabs(meshExt->newBarycenters[element_lI][0]);
             if( elgI == nelgI-1 )  meshExt->newBarycenters[element_lI][0] -= 1.0e-3 * fabs(meshExt->newBarycenters[element_lI][0]);
             if( elgJ == 0 )        meshExt->newBarycenters[element_lI][1] += 1.0e-3 * fabs(meshExt->newBarycenters[element_lI][1]);
             if( elgJ == nelgJ-1 )  meshExt->newBarycenters[element_lI][1] -= 1.0e-3 * fabs(meshExt->newBarycenters[element_lI][1]);
             if( elgK == 0 )        meshExt->newBarycenters[element_lI][2] += 1.0e-3 * fabs(meshExt->newBarycenters[element_lI][2]);
             if( elgK == nelgK-1 )  meshExt->newBarycenters[element_lI][2] -= 1.0e-3 * fabs(meshExt->newBarycenters[element_lI][2]);
+			*/
+
 		}
 	}
 
