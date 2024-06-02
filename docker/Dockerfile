@@ -23,6 +23,13 @@ WORKDIR /home/snac_user
 
 USER snac_user
 
+#make gcc use -fcommon
+RUN cd docker; chmod +x gcc;
+
+ENV PATH=/home/snac_user/snac/docker:$PATH
+
+
+
 ENV FFLAGS="-w -fallow-argument-mismatch -O2"
 
 RUN curl -L -O "https://www.mpich.org/static/downloads/1.5rc3/mpich2-1.5rc3.tar.gz"; tar -xvf mpich2-1.5rc3.tar.gz; cd mpich2-1.5rc3; ./configure --prefix=/home/snac_user/mpich2-install 2>&1 | tee c.txt; make 2>&1 | tee m.txt; make install 2>&1 | tee mi.txt; export PATH=/home/you/mpich-install/bin:$PATH;
@@ -30,24 +37,24 @@ RUN curl -L -O "https://www.mpich.org/static/downloads/1.5rc3/mpich2-1.5rc3.tar.
 
 
 #should make sure these all point to the correct locations
-ENV MPI_DIR=/home/snac_user/mpich2-install
-ENV MPI_BINDIR=${MPI_DIR}/bin
-ENV MPI_INCDIR=${MPI_DIR}/include/mpich2
-ENV MPI_LIBDIR=${MPI_DIR}/lib
-ENV MPI_RUN=${MPI_BINDIR}/mpirun
-ENV PATH=${MPI_BINDIR}:{$PATH}
-ENV LD_LIBRARY_PATH=${MPI_LIBDIR}:{LD_LIBRARY_PATH}
-ENV CC=mpicc
-ENV CXX=mpicxx
+#ENV MPI_DIR=/home/snac_user/mpich2-install
+#ENV MPI_BINDIR=${MPI_DIR}/bin
+ENV MPI_INCDIR=/home/snac_user/mpich2-1.5rc3/src/include
+#ENV MPI_LIBDIR=${MPI_DIR}/lib
+#ENV MPI_RUN=${MPI_BINDIR}/mpirun
+#ENV PATH=${MPI_BINDIR}:{$PATH}
+#ENV LD_LIBRARY_PATH=${MPI_LIBDIR}:{LD_LIBRARY_PATH}
+#ENV CC=mpicc
+#ENV CXX=mpicxx
+#
+#ENV GSL_DIR=/usr/bin
+#
+#ENV SNAC_DIR=${HOME}/Src/SNAC
+#ENV SNAC_BLDDIR=${SNAC_DIR}/build
+#ENV SNAC_BINDIR=${SNAC_BLDDIR}/bin
+#ENV SNAC_INCDIR=${SNAC_BLDDIR}/include
+#ENV SNAC_LIBDIR=${SNAC_BLDDIR}/lib
+#ENV PATH=${SNAC_BINDIR}:{$PATH}
+#ENV LD_LIBRARY_PATH=${SNAC_LIBDIR}:{LD_LIBRARY_PATH}
 
-ENV GSL_DIR=/usr/bin
-
-ENV SNAC_DIR=${HOME}/Src/SNAC
-ENV SNAC_BLDDIR=${SNAC_DIR}/build
-ENV SNAC_BINDIR=${SNAC_BLDDIR}/bin
-ENV SNAC_INCDIR=${SNAC_BLDDIR}/include
-ENV SNAC_LIBDIR=${SNAC_BLDDIR}/lib
-ENV PATH=${SNAC_BINDIR}:{$PATH}
-ENV LD_LIBRARY_PATH=${SNAC_LIBDIR}:{LD_LIBRARY_PATH}
-
-RUN git clone 'https://github.com/geodynamics/snac.git'; cd snac;
+RUN git clone 'https://github.com/jarettbakerdunn/snac.git'; cd snac; git fetch; git pull;
