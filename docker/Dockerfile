@@ -12,7 +12,10 @@ RUN apt-get update && \
     libgsl-dev \
     curl \
     libmpich-dev \
-    mpich
+    mpich \
+    subversion \
+    libapache2-mod-svn \
+    libc6-dev
 
 
 RUN useradd \
@@ -41,7 +44,7 @@ ENV MPI_INCDIR=/home/snac_user/mpich2-1.5rc3/src/include
 #ENV CXX=mpicxx
 #
 #ENV GSL_DIR=/usr/bin
-#
+ENV DL_DIR /usr/lib/x86_64-linux-gnu
 #ENV SNAC_DIR=${HOME}/Src/SNAC
 #ENV SNAC_BLDDIR=${SNAC_DIR}/build
 #ENV SNAC_BINDIR=${SNAC_BLDDIR}/bin
