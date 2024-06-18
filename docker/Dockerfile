@@ -57,6 +57,8 @@ RUN git clone 'https://github.com/JarettBakerDunn/snac.git'; cd snac; git checko
 
 RUN cd snac; git checkout devel; git fetch; git pull;
 
+RUN cd snac; git checkout devel; git fetch; git pull;
+
 #make gcc use -fcommon
 RUN cd snac; cd docker; chmod +x gcc;
 ENV PATH=/home/snac_user/snac/docker:$PATH
@@ -65,4 +67,4 @@ ENV PATH=/home/snac_user/snac/docker:$PATH
 RUN cd snac; cd docker; chmod +x cc;
 ENV PATH=/home/snac_user/snac/docker:$PATH
 
-RUN cd snac/docker; mv configure.sh /home/snac_user/snac/Vmake
+RUN cd snac; cd docker; mv configure.sh /home/snac_user/snac/Snac/Vmake
