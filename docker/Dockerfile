@@ -44,7 +44,7 @@ ENV MPI_INCDIR=/home/snac_user/mpich2-1.5rc3/src/include
 #ENV CXX=mpicxx
 #
 #ENV GSL_DIR=/usr/bin
-ENV DL_DIR /usr/lib/x86_64-linux-gnu
+ENV DL_DIR /usr
 #ENV SNAC_DIR=${HOME}/Src/SNAC
 #ENV SNAC_BLDDIR=${SNAC_DIR}/build
 #ENV SNAC_BINDIR=${SNAC_BLDDIR}/bin
@@ -64,3 +64,5 @@ ENV PATH=/home/snac_user/snac/docker:$PATH
 #make cc use -fcommon
 RUN cd snac; cd docker; chmod +x cc;
 ENV PATH=/home/snac_user/snac/docker:$PATH
+
+RUN cd snac/docker; mv configure.sh /home/snac_user/snac/Vmake
