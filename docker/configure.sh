@@ -1158,7 +1158,8 @@ if test "${CC_OPTIMISATIONLEVEL}x" = "x"; then
 	export CC_OPTIMISATIONLEVEL
 fi
 
-
+#try setting LIBDIR. Edit by Jarett
+export DL_LIBDIR=/usr/lib/x86_64-linux-gnu
 
 # Obtain dl information
 if test "${DL_DIR}x" = "x"; then
@@ -1176,6 +1177,7 @@ if test "${DL_LIBDIR}x" = "x"; then
 	DL_LIBDIR=${DL_DIR}/lib/x86_64-linux-gnu
 	export DL_LIBDIR
 fi
+
 if test "${DL_LIBFILES}x" = "x"; then
 	case $SYSTEM in
 		Linux|Darwin|SunOS)
