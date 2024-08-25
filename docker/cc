@@ -1,1 +1,1 @@
-/usr/bin/cc -fcommon $@
+mpicc $@

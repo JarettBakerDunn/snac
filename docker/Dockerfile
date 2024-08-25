@@ -43,4 +43,4 @@ ENV PATH=/home/snac_user/snac/docker:$PATH
 RUN cd snac; cd docker; chmod +x cc;
 ENV PATH=/home/snac_user/snac/docker:$PATH
 
-RUN cd snac; cd docker; mv configure.sh /home/snac_user/snac; cd ..; chmod +x configure.sh;
+RUN cd snac; cd docker; mv configure.sh /home/snac_user/snac; cd ..; chmod +x configure.sh; ./configure.sh; make;
