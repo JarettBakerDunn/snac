@@ -35,12 +35,7 @@ ENV MPI_INCDIR=/home/snac_user/mpich2-1.5rc3/src/include
 
 RUN git clone 'https://github.com/jarettbakerdunn/snac.git'; cd snac; git checkout devel;
 
-#make gcc use -fcommon
-RUN cd snac; cd docker; chmod +x gcc;
-ENV PATH=/home/snac_user/snac/docker:$PATH
+ENV CC=mpicc
+ENV CXX=mpicxx
 
-#make cc use -fcommon
-RUN cd snac; cd docker; chmod +x cc;
-ENV PATH=/home/snac_user/snac/docker:$PATH
-
-RUN cd snac; cd docker; mv configure.sh /home/snac_user/snac; cd ..; chmod +x configure.sh; ./configure.sh; make;
+#RUN cd snac; cd docker; mv configure.sh /home/snac_user/snac; cd ..; chmod +x configure.sh;
